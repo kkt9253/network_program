@@ -1,7 +1,7 @@
 import socket
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-sock.bind(('', 9005))
+sock.bind(('', 9001))
 sock.listen(4)
 print('waiting...')
 
@@ -15,6 +15,7 @@ while True:
         if not request:
             break
         if request == 'q':
+            client.send(b'disconnect')
             break
         
         operators = ['+', '-', '*', '/']
